@@ -15,8 +15,27 @@ class App extends React.Component{
   state = {
     count: 0
   };
-  render() {
-    return <h1>Im a class component { this.state.count }</h1>;
+  add = () => {
+    console.log("add");
+  //  this.state.count = 1;
+    this.setState(current => ({count: current.count + 1})); // recall render again
+  };
+  minus=()=>{
+    console.log("minus");
+//    this.state.count = -1;
+    this.setState(current => ({count: current.count - 1}));
+
+  };
+  render() {// automatically called
+    return  (
+      <div>
+        <h1>The number is: { this.state.count }</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+
+
   }
 }
 
