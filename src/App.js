@@ -1,21 +1,30 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
-function Potato( {fav , image} ){
+function Potato( {fav , image , rating} ){
   return <div>
              <h1>  like {fav} </h1>
+             <h3> {rating}/5.0 </h3>
              <img src={image} alt={fav}/>
         </div>;
+}
+Potato.propTypes={
+  fav: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired
 }
 const foodILike = [
 {
   id:3,
   name: "kimchi",
-  image: "https://recipe1.ezmember.co.kr/cache/recipe/2016/10/10/e1d38d22a01a5f11619e141e089f66cb1.jpg"
+  image: "https://recipe1.ezmember.co.kr/cache/recipe/2016/10/10/e1d38d22a01a5f11619e141e089f66cb1.jpg",
+  rating: 5
 },
 {
   id:2,
   name: "don",
-  image: "https://www.google.co.kr/imgres?imgurl=https%3A%2F%2Fimg.sbs.co.kr%2Fnewsnet%2Fetv%2Fupload%2F2014%2F01%2F10%2F30000347969_1280.jpg&imgrefurl=http%3A%2F%2Fsbsfune.sbs.co.kr%2Fnews%2Fnews_content.jsp%3Farticle_id%3DE10004919505&tbnid=yNie3dJ4ein_VM&vet=12ahUKEwiqzIqTxP_oAhVVA5QKHTPmCa4QMygBegUIARCTAg..i&docid=3bl0-3keqw56UM&w=640&h=428&q=%EB%8F%88%EA%B0%80%EC%8A%A4&ved=2ahUKEwiqzIqTxP_oAhVVA5QKHTPmCa4QMygBegUIARCTAg"
+  image: "https://www.google.co.kr/imgres?imgurl=https%3A%2F%2Fimg.sbs.co.kr%2Fnewsnet%2Fetv%2Fupload%2F2014%2F01%2F10%2F30000347969_1280.jpg&imgrefurl=http%3A%2F%2Fsbsfune.sbs.co.kr%2Fnews%2Fnews_content.jsp%3Farticle_id%3DE10004919505&tbnid=yNie3dJ4ein_VM&vet=12ahUKEwiqzIqTxP_oAhVVA5QKHTPmCa4QMygBegUIARCTAg..i&docid=3bl0-3keqw56UM&w=640&h=428&q=%EB%8F%88%EA%B0%80%EC%8A%A4&ved=2ahUKEwiqzIqTxP_oAhVVA5QKHTPmCa4QMygBegUIARCTAg",
+  rating:4
 },
 
 ];
@@ -33,7 +42,7 @@ function App() {
   return  (
     <div>
        <h1>Hello</h1>
-       {foodILike.map(dish => <Potato key={dish.id} fav={dish.name} image={dish.image}/>)}
+       {foodILike.map(dish => <Potato key={dish.id} fav={dish.name} image={dish.image} rating={dish.rating} />)}
 
      </div>
   );
